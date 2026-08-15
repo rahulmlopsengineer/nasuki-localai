@@ -13,15 +13,18 @@ export type ChatMessageState =
   | "stopped";
 
 // ---- Auth / User ------------------------------------------------------------
-export type AuthMethod = "google" | "demo";
+export type AuthProvider = "google" | "demo";
 
 export interface User {
-  id: string;
+  id: string; // local SQLite id
+  remoteId?: string; // backend user id (google)
   name: string;
   email: string;
-  avatarUrl?: string;
-  method: AuthMethod;
+  profileImage?: string;
+  provider: AuthProvider;
   createdAt: string; // ISO
+  updatedAt: string; // ISO
+  isDemoUser: boolean;
 }
 
 // ---- Chat -------------------------------------------------------------------
@@ -36,12 +39,17 @@ export interface Message {
   createdAt: string; // ISO
 }
 
+export type ConversationMode = "offline" | "online" | "rag" | "private";
+
 export interface Conversation {
   id: string;
   title: string;
   modelId: string;
+  mode?: ConversationMode;
   lastMessage: string;
   pinned: boolean;
+  isPrivate?: boolean;
+  isArchived?: boolean;
   messageCount: number;
   updatedAt: string; // ISO
   createdAt: string; // ISO

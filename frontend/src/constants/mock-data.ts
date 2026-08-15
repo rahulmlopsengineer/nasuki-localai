@@ -42,9 +42,11 @@ export const onboardingSlides: OnboardingSlide[] = [
 export const mockUser: User = {
   id: "usr-001",
   name: "Alex Rivera",
-  email: "alex.rivera@nasuki.ai",
-  method: "demo",
+  email: "demo@nasuki.ai",
+  provider: "demo",
+  isDemoUser: true,
   createdAt: "2026-01-04T10:00:00.000Z",
+  updatedAt: "2026-01-04T10:00:00.000Z",
 };
 
 export const mockModels: AIModel[] = [

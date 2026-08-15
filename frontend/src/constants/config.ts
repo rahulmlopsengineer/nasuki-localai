@@ -18,3 +18,14 @@ export const CREDITS = {
   rewardPerAd: 5,
   starting: 100,
 } as const;
+
+// Backend base URL (never hardcode). All auth calls go to `${API_BASE}/api/...`.
+export const API_BASE = process.env.EXPO_PUBLIC_BACKEND_URL ?? "";
+
+// Development-only demo login. Production builds must set this to false.
+export const DEV_AUTH_ENABLED = process.env.EXPO_PUBLIC_DEV_AUTH_ENABLED === "true";
+
+// Secure-storage key for the backend session token (Keychain, never SQLite).
+export const SESSION_TOKEN_KEY = "nasuki.session.token";
+// Persisted active user id (non-secret) so we can restore the local profile fast.
+export const ACTIVE_USER_KEY = "nasuki.active.user.id";
